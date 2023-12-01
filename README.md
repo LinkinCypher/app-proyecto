@@ -4,60 +4,74 @@
   <a href="https://nodejs.org/en" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/590px-Node.js_logo.svg.png" width="200" alt="Node Logo" /></a>
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-<p align="center">Cristhian M. - CRUD</p>
 <p align="center">npm v10.2.4</p>
 <p align="center">node v20.9.0</p>
 
 
-## Description
+## INSTALACIÓN BASICA
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Instalar Visual Studio Code:
+<a href="https://code.visualstudio.com/" target="_blank">https://code.visualstudio.com/</a>
 
-## Installation
+Instalar Git:
+<a href="https://git-scm.com/download/" target="_blank">https://git-scm.com/download/</a>
 
+Instalar nvm:
 ```bash
-$ npm install
+sudo su
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+source ~/.bashrc
+nvm –-
 ```
+
+Instalar Node a su última versión:
+```bash
+nvm install node
+node --version
+```
+
+Instalar Node en una versión especifica
+```bash
+nvm install 16.16.0 // Node LTS
+nvm ls
+nvm use 16.16.0 | 16.11.1
+nvm uninstall 16.16.0
+```
+
+Instalar mongodb
+```bash
+sudo apt install -y mongodb
+sudo systemctl start mongod
+sudo systemctl status mongod
+```
+
+Instalar Gestor de base de datos Compass
+<a href="https://www.mongodb.com/try/download/compass" target="_blank">https://www.mongodb.com/try/download/compass</a>
+
 
 ## Running the app
 
+Instalar modulos
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+npm i
 ```
 
-## Test
-
+Compilar y crear la carpeta dist
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+npm run build
 ```
 
-## Support
+Ejecutar servidor por npm
+```bash
+npm run start
+```
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+Ejecutar servidor por pm2
+```bash
+pm2 start pm2.json
+```
+
 
 ## Stay in touch
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+- Author - [Cristhian M](https://google.com)

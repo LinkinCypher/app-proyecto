@@ -1,0 +1,25 @@
+{
+    "apps": [
+        {
+            "name": "appProyecto",
+            "script": "npm",
+            "args": "run start:debug",
+            "ignore-watch": [
+                "./node_modules"
+            ],
+            "watch_options": {
+                "usePolling": true
+            },
+            "max_memory_restart": "200M",
+            "error_file": "./logs/app-error.log",
+            "out_file": "./logs/app-out.log",
+            "env": {
+                "NODE_ENV": "development",
+                "ENCRYPT_ALGORITHM": "aes-256-cbc",
+                "ENCRYPT_KEY": "*key_32_caracteres_para_funcionar",
+                "DB_PROYECTO_USER": "usDbProyectoWeb",
+                "DB_PROYECTO_PASSWORD": "desarrollo"
+            }
+        }
+    ]
+}

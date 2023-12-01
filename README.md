@@ -8,7 +8,7 @@
 <p align="center">node v20.9.0</p>
 
 
-## INSTALACIÓN BASICA
+## INSTALACIÓN
 
 Instalar Visual Studio Code:
 <a href="https://code.visualstudio.com/" target="_blank">https://code.visualstudio.com/</a>
@@ -49,7 +49,7 @@ Instalar Gestor de base de datos Compass
 <a href="https://www.mongodb.com/try/download/compass" target="_blank">https://www.mongodb.com/try/download/compass</a>
 
 
-## Running the app
+## EJECUTAR APP
 
 Instalar modulos
 ```bash
@@ -72,6 +72,6 @@ pm2 start pm2.json
 ```
 
 
-## Stay in touch
+## CONTACTO
 
 - Author - [Cristhian M](https://google.com)

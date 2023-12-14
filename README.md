@@ -72,8 +72,3 @@ Ejecutar servidor por pm2
 ```bash
 pm2 start pm2.json
 ```
-
-
-## CONTACTO
-
-- Author - [Cristhian M](https://google.com)

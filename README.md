@@ -26,13 +26,15 @@ source ~/.bashrc
 nvm –-
 ```
 
-Instalar Node a su última versión:
+Instalar Node: Metodo 1 a su última versión:
+<a href="https://nodejs.org/en" target="_blank">https://nodejs.org/en</a>
 ```bash
 nvm install node
 node --version
 ```
 
-Instalar Node en una versión especifica
+Instalar Node: Metodo 2 en una versión especifica
+<a href="https://nodejs.org/dist/v16.16.0/" target="_blank">https://nodejs.org/dist/v16.16.0/</a>
 ```bash
 nvm install 16.16.0 // Node LTS
 nvm ls
@@ -41,6 +43,7 @@ nvm uninstall 16.16.0
 ```
 
 Instalar mongodb
+<a href="https://fastdl.mongodb.org/windows/mongodb-windows-x86_64-7.0.4-signed.msi" target="_blank">https://www.mongodb.com/try/download/community</a>
 ```bash
 sudo apt install -y mongodb
 sudo systemctl start mongod
@@ -48,7 +51,7 @@ sudo systemctl status mongod
 ```
 
 Instalar Gestor de base de datos Compass
-<a href="https://www.mongodb.com/try/download/compass" target="_blank">https://www.mongodb.com/try/download/compass</a>
+<a href="https://downloads.mongodb.com/compass/mongodb-compass-1.41.0-win32-x64.exe" target="_blank">https://www.mongodb.com/try/download/compass</a>
 
 
 ## EJECUTAR APP

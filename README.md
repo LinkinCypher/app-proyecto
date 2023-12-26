@@ -76,3 +76,10 @@ Ejecutar servidor por pm2
 npm install -g pm2
 pm2 start pm2.json
 ```
+
+Configurar Git por primera vez
+```bash
+git config --global user.name "Nombre"
+git config --global user.email nombre@example.com
+git config --global credential.helper 'cache --timeout=10000'
+```

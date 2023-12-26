@@ -12,13 +12,13 @@
 
 ## INSTALACIÓN
 
-Instalar Visual Studio Code: <br>
+1. Instalar Visual Studio Code: <br>
 <a href="https://code.visualstudio.com/" target="_blank">https://code.visualstudio.com/</a>
 
-Instalar Git: <br>
+2. Instalar Git: <br>
 <a href="https://git-scm.com/download/" target="_blank">https://git-scm.com/download/</a>
 
-Instalar nvm: <br>
+3. Instalar nvm: <br>
 ```bash
 sudo su
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
@@ -26,23 +26,24 @@ source ~/.bashrc
 nvm –-
 ```
 
-Instalar Node: Metodo 1 a su última versión: <br>
+4. Instalar Node: <br>
+Metodo 1 a su última versión: <br>
 <a href="https://nodejs.org/en" target="_blank">https://nodejs.org/en</a>
 ```bash
 nvm install node
 node --version
 ```
 
-Instalar Node: Metodo 2 en una versión especifica <br>
-<a href="https://nodejs.org/dist/v16.16.0/" target="_blank">https://nodejs.org/dist/v16.16.0/</a>
+Metodo 2 en una versión especifica <br>
+<a href="https://nodejs.org/dist/v20.9.0/" target="_blank">https://nodejs.org/dist/v20.9.0/</a>
 ```bash
-nvm install 16.16.0 // Node LTS
+nvm install 20.9.0 // Node LTS
 nvm ls
-nvm use 16.16.0 | 16.11.1
-nvm uninstall 16.16.0
+nvm use 20.9.0 | 20.9.0
+nvm uninstall 20.9.0
 ```
 
-Instalar mongodb <br>
+5. Instalar mongodb <br>
 <a href="https://fastdl.mongodb.org/windows/mongodb-windows-x86_64-7.0.4-signed.msi" target="_blank">https://www.mongodb.com/try/download/community</a>
 ```bash
 sudo apt install -y mongodb
@@ -50,7 +51,7 @@ sudo systemctl start mongod
 sudo systemctl status mongod
 ```
 
-Instalar Gestor de base de datos Compass <br>
+6. Instalar Gestor de base de datos Compass <br>
 <a href="https://downloads.mongodb.com/compass/mongodb-compass-1.41.0-win32-x64.exe" target="_blank">https://www.mongodb.com/try/download/compass</a>
 
 

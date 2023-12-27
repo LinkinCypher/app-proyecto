@@ -2,7 +2,7 @@
     "apps": [
       {
         "name": "appProyecto",
-        "script": "nodemon dist/src/main.js",
+        "script": "nest start --watch",
         "instances": "1",
         "autorestart": true,
         "watch": false,

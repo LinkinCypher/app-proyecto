@@ -37,4 +37,11 @@ constructor(@InjectModel('Tareas') private readonly tareaModel: Model<Tarea>) {}
         const deleteTarea = await this.tareaModel.findByIdAndDelete(tareaID);
         return deleteTarea;
     }
+
+    // Eliminar un dato de forma lógica
+    async softDeleteTarea(tareaID: string): Promise<Tarea> {
+        const updateData = { deletedAt: new Date() }; // Borrado lógico
+        const deletedTarea = await this.tareaModel.findByIdAndUpdate(tareaID, updateData, { new: true });
+        return deletedTarea;
+    }
 }

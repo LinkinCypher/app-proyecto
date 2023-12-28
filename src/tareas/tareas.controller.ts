@@ -53,4 +53,15 @@ export class TareasController {
             tareaDeleted
         })
     }
+
+    //borrado lógico localhost:3000/tareas/soft-delete/658d863af717483ebb131f4d
+    @Delete('/soft-delete/:tareaID')
+    async softDeleteTarea(@Res() res, @Param('tareaID') tareaID) {
+        const deletedTarea = await this.tareaService.softDeleteTarea(tareaID); // Borrado lógico
+        if (!deletedTarea) throw new NotFoundException('Tarea no encontrada');
+        return res.status(HttpStatus.OK).json({
+            message: 'Tarea marcada como eliminada',
+            deletedTarea
+        })
+    }
 }

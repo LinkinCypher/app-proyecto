@@ -5,5 +5,6 @@ export const TareaSchema = new Schema({
   nombre: { type: String, required: true },
   descripcion: { type: String, required: true },
   fecha_creado: { type: Date, default: Date.now },
-  deleted: { type: Boolean, default: false } // Campo para representar el estado de eliminación
+  fecha_editado: { type: Date, default: null }, // Fecha de la última edición
+  deleted: { type: Boolean, default: false }, // Campo para representar el estado
 });

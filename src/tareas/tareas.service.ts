@@ -30,7 +30,9 @@ constructor(@InjectModel('Tareas') private readonly tareaModel: Model<Tarea>) {}
 
     // Editar un dato por ID
     async updateTarea(tareaID: string, createTareaDTO: CreateTareaDTO): Promise<Tarea>{
-        const updateTarea = await this.tareaModel.findByIdAndUpdate(tareaID, createTareaDTO, {new: true});
+        // Agregar la actualización de fecha_editado al objeto de datos a actualizar
+        createTareaDTO.fecha_editado = new Date();
+        const updateTarea = await this.tareaModel.findByIdAndUpdate(tareaID, createTareaDTO, { new: true });
         return updateTarea;
     }
 

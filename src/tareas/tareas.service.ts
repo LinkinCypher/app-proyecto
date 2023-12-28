@@ -10,7 +10,9 @@ constructor(@InjectModel('Tareas') private readonly tareaModel: Model<Tarea>) {}
 
     // Obtener todos los datos
     async getTareas(): Promise<Tarea[]>{
-        const tareas = await this.tareaModel.find()
+        const tareas = await this.tareaModel.find({ 
+            deleted: false 
+        });
         return tareas;
     }
 

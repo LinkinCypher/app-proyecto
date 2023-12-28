@@ -6,7 +6,7 @@ import { CreateTareaDTO } from './dto/tareas.dto';
 
 @Injectable()
 export class TareasService {
-constructor(@InjectModel('Tareas') private readonly tareaModel: Model<Tarea>) {}
+    constructor(@InjectModel('Tareas') private readonly tareaModel: Model<Tarea>) {}
 
     // Obtener todos los datos
     async getTareas(): Promise<Tarea[]>{
@@ -24,16 +24,27 @@ constructor(@InjectModel('Tareas') private readonly tareaModel: Model<Tarea>) {}
 
     // Crear un dato
     async createTarea(createTareaDTO: CreateTareaDTO): Promise<Tarea>{
+        // Establecer el valor por defecto de deleted como false
+        createTareaDTO.deleted = false;
         const tarea = new this.tareaModel(createTareaDTO);
         return await tarea.save();
     }
 
     // Editar un dato por ID
-    async updateTarea(tareaID: string, createTareaDTO: CreateTareaDTO): Promise<Tarea>{
-        // Agregar la actualización de fecha_editado al objeto de datos a actualizar
-        createTareaDTO.fecha_editado = new Date();
-        const updateTarea = await this.tareaModel.findByIdAndUpdate(tareaID, createTareaDTO, { new: true });
-        return updateTarea;
+    async updateTarea(tareaID: string, createTareaDTO: CreateTareaDTO): Promise<Tarea> {
+        // Actualiza los campos que se desean cambiar
+        const updatedTarea = await this.tareaModel.findByIdAndUpdate(
+            tareaID,
+            {
+                numero: createTareaDTO.numero,
+                nombre: createTareaDTO.nombre,
+                descripcion: createTareaDTO.descripcion,
+                // Otros campos que necesites actualizar...
+                "auditoria.fecha_editado": new Date() // Actualiza la fecha de edición
+            },
+            { new: true }
+        );
+        return updatedTarea;
     }
 
     // Eliminar un dato

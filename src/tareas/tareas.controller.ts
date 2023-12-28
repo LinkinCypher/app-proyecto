@@ -10,21 +10,26 @@ export class TareasController {
     // listar todos los datos localhost:3000/tareas/list
     @Get('/list')
     async getTareas(@Res() res) {
+        console.log('Se consultó todos los datos');
         const tarea = await this.tareaService.getTareas();
         return res.status(HttpStatus.OK).json(tarea);
     }
 
-    //listar un dato localhost:3000/######
-    @Get('/:taskID')
+    //listar un dato localhost:3000/tareas/######
+    @Get('/:tareaID')
     async getTarea(@Res() res, @Param('tareaID') tareaID){
+        console.log('Consultó un dato ID:', tareaID);
         const tarea = await this.tareaService.getTarea(tareaID);
-        if(!tarea) throw new NotFoundException('Dato no existe');
+        if(!tarea) {
+            throw new NotFoundException('Dato no existe');
+        }
         return res.status(HttpStatus.OK).json(tarea);
     }
 
     //crear un dato
     @Post('/create')
     async createTarea(@Res() res, @Body() createTareaDTO: CreateTareaDTO) {
+        console.log('Una tarea se creó');
         const tarea = await this.tareaService.createTarea(createTareaDTO);
         return res.status(HttpStatus.OK).json({
             message: 'Una tarea se ha creado',
@@ -35,8 +40,11 @@ export class TareasController {
     //editar un dato localhost:3000/tareas/update/######
     @Put('/update/:tareaID')
     async updateTarea(@Res() res, @Body() createTareaDTO: CreateTareaDTO, @Param('tareaID') tareaID) {
+        console.log('Se actualizó ID:', tareaID);
         const updateTarea = await this.tareaService.updateTarea(tareaID, createTareaDTO);
-        if (!updateTarea) throw new NotFoundException('Tarea no encontrada');
+        if (!updateTarea) {
+            throw new NotFoundException('Tarea no encontrada');
+        }
         return res.status(HttpStatus.OK).json({
             message: 'Tarea actualizada',
             updateTarea
@@ -46,8 +54,11 @@ export class TareasController {
     //eliminar un dato localhost:3000/tareas/delete/######
     @Delete('/deleteBD/:tareaID')
     async deleteTarea(@Res() res, @Param('tareaID') tareaID) {
+        console.log('Se eliminó ID:', tareaID);
         const tareaDeleted = await this.tareaService.deleteTarea(tareaID); // Borrado físico
-        if (!tareaDeleted) throw new NotFoundException('Tarea no encontrada');
+        if (!tareaDeleted) {
+            throw new NotFoundException('Tarea no encontrada');
+        }
         return res.status(HttpStatus.OK).json({
             message: 'Tarea eliminada físicamente',
             tareaDeleted
@@ -57,8 +68,11 @@ export class TareasController {
     //borrado lógico localhost:3000/tareas/delete/######
     @Delete('/delete/:tareaID')
     async softDeleteTarea(@Res() res, @Param('tareaID') tareaID) {
+        console.log('Se cambia de estado a eliminado ID:', tareaID);
         const deletedTarea = await this.tareaService.softDeleteTarea(tareaID); // Borrado lógico
-        if (!deletedTarea) throw new NotFoundException('Tarea no encontrada');
+        if (!deletedTarea) {
+            throw new NotFoundException('Tarea no encontrada');
+        }
         return res.status(HttpStatus.OK).json({
             message: 'Tarea marcada como eliminada',
             deletedTarea

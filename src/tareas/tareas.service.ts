@@ -32,14 +32,12 @@ export class TareasService {
 
     // Editar un dato por ID
     async updateTarea(tareaID: string, createTareaDTO: CreateTareaDTO): Promise<Tarea> {
-        // Actualiza los campos que se desean cambiar
         const updatedTarea = await this.tareaModel.findByIdAndUpdate(
             tareaID,
             {
                 numero: createTareaDTO.numero,
                 nombre: createTareaDTO.nombre,
                 descripcion: createTareaDTO.descripcion,
-                // Otros campos que necesites actualizar...
                 "auditoria.fecha_editado": new Date() // Actualiza la fecha de edición
             },
             { new: true }
@@ -55,7 +53,11 @@ export class TareasService {
 
     // Eliminar un dato de forma lógica
     async softDeleteTarea(tareaID: string): Promise<Tarea> {
-        const updateData = { deleted: true }; // Actualizar el campo deleted a true
+        const updateData = {
+            deleted: true, //cambia el estado false a true
+            "auditoria.fecha_eliminado": new Date() // Registra la fecha de eliminación
+        };
+    
         const deletedTarea = await this.tareaModel.findByIdAndUpdate(tareaID, updateData, { new: true });
         return deletedTarea;
     }

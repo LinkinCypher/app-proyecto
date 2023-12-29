@@ -7,7 +7,8 @@ export class TareasController {
 
     constructor(private tareaService: TareasService){}
 
-    // listar todos los datos localhost:3000/tareas/list
+
+    // Listar todos los datos
     @Get('/list')
     async getTareas(@Res() res) {
         console.log('Se consultó todos los datos');
@@ -15,8 +16,9 @@ export class TareasController {
         return res.status(HttpStatus.OK).json(tarea);
     }
 
-    //listar un dato localhost:3000/tareas/######
-    @Get('/:tareaID')
+
+    // Listar un dato
+    @Get('list/:tareaID')
     async getTarea(@Res() res, @Param('tareaID') tareaID){
         console.log('Consultó un dato ID:', tareaID);
         const tarea = await this.tareaService.getTarea(tareaID);
@@ -26,7 +28,8 @@ export class TareasController {
         return res.status(HttpStatus.OK).json(tarea);
     }
 
-    //crear un dato
+
+    // Crear un dato
     @Post('/create')
     async createTarea(@Res() res, @Body() createTareaDTO: CreateTareaDTO) {
         console.log('Una tarea se creó');
@@ -37,7 +40,8 @@ export class TareasController {
         });
     }
 
-    //editar un dato localhost:3000/tareas/update/######
+
+    // Editar un dato
     @Put('/update/:tareaID')
     async updateTarea(@Res() res, @Body() createTareaDTO: CreateTareaDTO, @Param('tareaID') tareaID) {
         console.log('Se actualizó ID:', tareaID);
@@ -51,21 +55,8 @@ export class TareasController {
         });
     }
 
-    //eliminar un dato localhost:3000/tareas/delete/######
-    @Delete('/deleteBD/:tareaID')
-    async deleteTarea(@Res() res, @Param('tareaID') tareaID) {
-        console.log('Se eliminó ID:', tareaID);
-        const tareaDeleted = await this.tareaService.deleteTarea(tareaID); // Borrado físico
-        if (!tareaDeleted) {
-            throw new NotFoundException('Tarea no encontrada');
-        }
-        return res.status(HttpStatus.OK).json({
-            message: 'Tarea eliminada físicamente',
-            tareaDeleted
-        });
-    }
 
-    //borrado lógico localhost:3000/tareas/delete/######
+    // Borrado lógico
     @Delete('/delete/:tareaID')
     async softDeleteTarea(@Res() res, @Param('tareaID') tareaID) {
         console.log('Se cambia de estado a eliminado ID:', tareaID);
@@ -77,5 +68,20 @@ export class TareasController {
             message: 'Tarea marcada como eliminada',
             deletedTarea
         })
+    }
+
+    
+    // Borrado físico
+    @Delete('/deleteBD/:tareaID')
+    async deleteTarea(@Res() res, @Param('tareaID') tareaID) {
+        console.log('Se eliminó ID:', tareaID);
+        const tareaDeleted = await this.tareaService.deleteTarea(tareaID); // Borrado físico
+        if (!tareaDeleted) {
+            throw new NotFoundException('Tarea no encontrada');
+        }
+        return res.status(HttpStatus.OK).json({
+            message: 'Tarea eliminada físicamente',
+            tareaDeleted
+        });
     }
 }

@@ -8,19 +8,22 @@ import { CreateTareaDTO } from './dto/tareas.dto';
 export class TareasService {
     constructor(@InjectModel('Tareas') private readonly tareaModel: Model<Tarea>) {}
 
+
     // Obtener todos los datos
     async getTareas(): Promise<Tarea[]>{
         const tareas = await this.tareaModel.find({ 
-            deleted: false 
+            deleted: false // Muestra solo los datos con el estado false
         });
         return tareas;
     }
+
 
     // Obtener solo un dato por ID
     async getTarea(tareaID: string): Promise<Tarea>{
         const tarea = await this.tareaModel.findById(tareaID);
         return tarea;
     }
+
 
     // Crear un dato
     async createTarea(createTareaDTO: CreateTareaDTO): Promise<Tarea>{
@@ -29,6 +32,7 @@ export class TareasService {
         const tarea = new this.tareaModel(createTareaDTO);
         return await tarea.save();
     }
+
 
     // Editar un dato por ID
     async updateTarea(tareaID: string, createTareaDTO: CreateTareaDTO): Promise<Tarea> {
@@ -45,11 +49,6 @@ export class TareasService {
         return updatedTarea;
     }
 
-    // Eliminar un dato
-    async deleteTarea(tareaID: string): Promise<any>{
-        const deleteTarea = await this.tareaModel.findByIdAndDelete(tareaID);
-        return deleteTarea;
-    }
 
     // Eliminar un dato de forma lógica
     async softDeleteTarea(tareaID: string): Promise<Tarea> {
@@ -60,5 +59,12 @@ export class TareasService {
     
         const deletedTarea = await this.tareaModel.findByIdAndUpdate(tareaID, updateData, { new: true });
         return deletedTarea;
+    }
+
+
+    // Eliminar un dato permanentemente
+    async deleteTarea(tareaID: string): Promise<any>{
+        const deleteTarea = await this.tareaModel.findByIdAndDelete(tareaID);
+        return deleteTarea;
     }
 }
